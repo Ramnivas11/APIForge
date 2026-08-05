@@ -1,0 +1,17 @@
+const { z } = require("zod");
+
+const apiRequestSchema = z.object({
+    method: z.enum(["GET", "POST", "PUT", "PATCH", "DELETE"]),
+
+    url: z.string().url(),
+
+    headers: z.record(z.string()).optional(),
+
+    query: z.record(z.any()).optional(),
+
+    body: z.any().optional(),
+});
+
+module.exports = {
+    apiRequestSchema,
+};
