@@ -1,7 +1,11 @@
 const axios = require("axios");
+const { validateTargetUrl } = require("../utils/urlValidator");
 
 const executeRequest = async (requestData) => {
+
     const { method, url, headers, query, body, timeout } = requestData;
+
+    validateTargetUrl(url);
 
     const startTime = Date.now();
 
