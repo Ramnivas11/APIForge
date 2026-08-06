@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 const executeRequest = async (requestData) => {
-    const { method, url, headers, query, body } = requestData;
+    const { method, url, headers, query, body, timeout } = requestData;
 
     const startTime = Date.now();
 
@@ -12,7 +12,7 @@ const executeRequest = async (requestData) => {
             headers,
             params: query,
             data: body,
-            timeout: 5000,
+            timeout: timeout || 5000,
         });
 
         const endTime = Date.now();
@@ -46,6 +46,16 @@ const executeRequest = async (requestData) => {
                 responseTime: endTime - startTime,
                 message: "Unable to reach the server",
             };
+        }
+        if (error.code === "ECONNABORTED") {
+
+            return {
+                success: false,
+                status: 408,
+                message: "Request timed out",
+                responseTime: endTime - startTime
+            };
+
         }
 
         return {

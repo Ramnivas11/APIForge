@@ -10,6 +10,8 @@ const apiRequestSchema = z.object({
     query: z.record(z.any()).optional(),
 
     body: z.any().optional(),
+
+    timeout: z.number().min(1000).max(10000).optional()
 });
 
 module.exports = {
