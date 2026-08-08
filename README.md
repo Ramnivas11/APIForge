@@ -164,6 +164,8 @@ Proxies an HTTP request to a target external API and returns execution metrics.
   "success": true,
   "status": 201,
   "responseTime": 245,
+  "responseSizeBytes": 108,
+  "responseSize": "108 Bytes",
   "headers": {
     "content-type": "application/json; charset=utf-8"
   },
