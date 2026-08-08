@@ -24,9 +24,16 @@ function isPrivateIPv4(hostname) {
     );
 }
 
+const allowedProtocols = ["http:", "https:"];
+
 function validateTargetUrl(url) {
     const parsed = new URL(url);
     const hostname = parsed.hostname;
+    const protocol = parsed.protocol;
+
+    if (!allowedProtocols.includes(protocol)) {
+        throw new Error(`Invalid protocol: '${protocol}'. Only HTTP and HTTPS are allowed.`);
+    }
 
     if (blockedHosts.includes(hostname)) {
         throw new Error("Access to this host is not allowed.");

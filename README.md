@@ -56,7 +56,7 @@ sequenceDiagram
 
 ## ✨ Features
 
-- 🛡️ **SSRF Security Protection**: Blocks requests to internal/private IPv4 networks (`10.x.x.x`, `172.16-31.x.x`, `192.168.x.x`), cloud metadata services (`169.254.169.254`), and loopback addresses (`localhost`, `127.0.0.1`).
+- 🛡️ **SSRF & Protocol Protection**: Strict protocol enforcement allowing only `http:` and `https:`. Blocks non-standard/risky schemes (`file:`, `ftp:`, `gopher:`, `javascript:`, etc.) as well as internal/private IPv4 networks (`10.x.x.x`, `172.16-31.x.x`, `192.168.x.x`), cloud metadata services (`169.254.169.254`), and loopback addresses (`localhost`, `127.0.0.1`).
 - ⚡ **Rate Limiting**: Protects endpoints from abuse using `express-rate-limit`.
 - ⏱️ **Response Time Profiling**: Measures request latency in milliseconds (`responseTime`).
 - 📋 **Schema Validation**: Robust payload validation using `zod`.
