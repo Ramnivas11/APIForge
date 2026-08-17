@@ -18,8 +18,8 @@ public class HelloController {
         return new HelloResponse(message,"Success");
     }
 
-    @PostMapping("api/greet")
-    public HelloResponse sayGreet(@RequestParam GreetingRequest request){
-        return new HelloResponse("Hello"+request.name(),"Success");
+    @PostMapping("/api/greet")
+    public HelloResponse sayGreet(@RequestBody GreetingRequest request) {
+        return new HelloResponse("Hello, " + request.name(), "Success");
     }
 }

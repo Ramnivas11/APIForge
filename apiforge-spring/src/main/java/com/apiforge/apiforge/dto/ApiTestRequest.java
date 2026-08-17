@@ -1,5 +1,6 @@
 package com.apiforge.apiforge.dto;
 
+import java.util.Map;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
