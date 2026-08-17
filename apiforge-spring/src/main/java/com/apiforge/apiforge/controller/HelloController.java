@@ -1,8 +1,10 @@
 package com.apiforge.apiforge.controller;
 
+import com.apiforge.apiforge.dto.GreetingRequest;
+import com.apiforge.apiforge.dto.HelloResponse;
 import com.apiforge.apiforge.service.MessageService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 public class HelloController {
@@ -11,7 +13,13 @@ public class HelloController {
         this.messageService = messageService;
     }
     @GetMapping("/api/hello")
-    public String sayHello(){
-        return messageService.sayHello();
+    public HelloResponse sayHello(){
+        String message=messageService.sayHello();
+        return new HelloResponse(message,"Success");
+    }
+
+    @PostMapping("api/greet")
+    public HelloResponse sayGreet(@RequestParam GreetingRequest request){
+        return new HelloResponse("Hello"+request.name(),"Success");
     }
 }
