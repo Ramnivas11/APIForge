@@ -2,6 +2,7 @@ package com.apiforge.apiforge.service;
 
 import com.apiforge.apiforge.client.HttpClientService;
 import com.apiforge.apiforge.dto.ApiTestRequest;
+import com.apiforge.apiforge.dto.ApiTestResponse;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public class ApiTestService {
         this.httpClientService = httpClientService;
     }
 
-    public String execute(ApiTestRequest request){
+    public ApiTestResponse execute(ApiTestRequest request){
         HttpMethod method = HttpMethod.valueOf(request.method().toUpperCase());
 
         return httpClientService.execute(method,request.url(),request.headers(),request.body());

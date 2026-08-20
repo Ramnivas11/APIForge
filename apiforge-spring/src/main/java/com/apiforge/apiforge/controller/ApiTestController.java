@@ -1,6 +1,7 @@
 package com.apiforge.apiforge.controller;
 
 import com.apiforge.apiforge.dto.ApiTestRequest;
+import com.apiforge.apiforge.dto.ApiTestResponse;
 import com.apiforge.apiforge.service.ApiTestService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +20,7 @@ public class ApiTestController {
     }
 
     @PostMapping("/test")
-    public String testApi(@Valid @RequestBody ApiTestRequest request) {
-
+    public ApiTestResponse testApi(@Valid @RequestBody ApiTestRequest request) {
         return apiTestService.execute(request);
     }
 }
